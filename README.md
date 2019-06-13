@@ -2,7 +2,7 @@
 
 ### Under Development
 
-> Manage your hosts + port forwarding on macOS like a pro.
+> Manage local hosts and port forwarding on macOS like a pro.
 
 Dhosts is an easy to use tool to help manage hosts + port mapping for local development on macOS. If you build on an windows or linux platform and are intrested in contributing to the project, would be love to make this a cross platform tool.
 
