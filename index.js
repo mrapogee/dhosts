@@ -242,6 +242,7 @@ const activateProfile = async profile => {
 
   const mappings = result
     .split("\n")
+    .map(line => line.split(/#/)[0])
     .map(line => line.trim())
     .filter(line => line != "")
     .map(line => line.split(/\s+/g))
