@@ -54,7 +54,3 @@ dev.mysite.com:80 :8080 # Feel free to omit the local IP address
 ```
 
 > Note: I'm still understanding the capabilities of `pfctl`, so there may be more mapping features it makes sense for us to support. Please leave an issue if you have use case.
-
-```
-
-```
