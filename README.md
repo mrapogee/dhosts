@@ -40,7 +40,7 @@ Dhosts supports port forwarding (via `pfctl`) as well has editing your hosts fil
 Example mappings:
 
 ```
-localhost         127.0.0.1      # Just like a regular hosts entry
+localhost         127.0.0.1      # similar like a regular hosts entry
 localhost         ::1            # IPV6, of course
 dev.mysite.com    127.0.0.1
 dev.mysite.com:80 127.0.0.1:8080 # We also support port mappings. We'll send all local # traffic going to `dev.mysite.com:80` to `127.0.0.1:8080`
