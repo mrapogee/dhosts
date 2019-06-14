@@ -24,8 +24,7 @@ Commands:
 Just call:
 
 ```
-> dhosts map <from> <to>
-
+$ dhosts map <from> <to>
 ```
 
 And dhosts will help you setup configuration, a profile, and activate your first mapping. See below for supported mappings.
