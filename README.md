@@ -23,7 +23,7 @@ Commands:
   edit-default                   Edit default hosts. Default hosts are always loaded, for mappings like: `localhost 127.0.0.1`
 ```
 
-## Getting strated
+## Getting Started
 
 Just call:
 
