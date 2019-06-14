@@ -271,6 +271,7 @@ const addMappingToProfile = async (from, to, profile) => {
   console.log(`✅  added mapping '${from} ${to}' to profile ${profile}`);
 
   const currentProfile = await fetchCurrentProfile();
+
   if (currenProfile === profile) {
     await activateProfile(currentProfile);
   }
