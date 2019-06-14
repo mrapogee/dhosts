@@ -236,6 +236,12 @@ ${Array.from(hostsMappings.entries())
   if (portForwards.length > 0) {
     await util.promisify(cp.exec)(pfCommand);
   }
+
+  console.log(
+    `✅  cleaned & activated ${mappings.length} ${
+      mappings.length === 1 ? "rule" : "rules"
+    }`
+  );
 };
 const activateProfile = async profile => {
   const result = await fs.readFile(getProfileLocation(profile), "UTF-8");
@@ -272,7 +278,7 @@ const addMappingToProfile = async (from, to, profile) => {
 
   const currentProfile = await fetchCurrentProfile();
 
-  if (currenProfile === profile) {
+  if (currentProfile === profile) {
     await activateProfile(currentProfile);
   }
 };
@@ -299,7 +305,7 @@ const addMapping = async (from, to, profile) => {
   const currentProfile = await getCurrentProfile(from, to);
 
   if (currentProfile != null) {
-    return addMappingToProfile(from, to, profile);
+    return addMappingToProfile(from, to, currentProfile);
   }
 
   const profileChoice = await chooseProfile(
@@ -370,6 +376,56 @@ program
   .command("activate <profile>")
   .description("Activate a profile")
   .action(cleanExit(setCurrentProfile));
+
+program
+  .command("new <profile>")
+  .description("Create a new profile")
+  .option("-a, --activate", "activate the new profile")
+  .action(
+    cleanExit(async (profileName, options) => {
+      const file = getProfileLocation(profileName);
+      await fs.writeFile(file, "");
+
+      if (options.activate) {
+        await setCurrentProfile(profileName);
+      }
+    })
+  );
+
+program
+  .command("list")
+  .description("List all created profiles")
+  .action(
+    cleanExit(async (profileName, options) => {
+      console.log((await fetchProfiles()).join("\n"));
+    })
+  );
+
+program
+  .command("delete <profile>")
+  .description("Delete a profile")
+  .action(
+    cleanExit(async profileName => {
+      const file = getProfileLocation(profileName);
+      await fs.unlink(file);
+
+      const current = await fetchCurrentProfile();
+      if (current === profileName) {
+        fs.writeFile(path.join(configDirectory, "current-profile"), "");
+        activateMappings([]);
+      }
+    })
+  );
+
+program
+  .command("clear")
+  .description("Clear current profile && disactivate all OS mappings")
+  .action(
+    cleanExit(async profileName => {
+      await fs.writeFile(path.join(configDirectory, "current-profile"), "");
+      await activateMappings([]);
+    })
+  );
 
 program
   .command("edit <profile>")
