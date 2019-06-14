@@ -13,10 +13,8 @@ Options:
 Commands:
   init                           Setup dhosts configuration at ~/.config/dhosts
   map [options] <hostname> <ip>  Map hosts (map my.dev 127.0.0.1), or map specific ports (map my.dev:80 127.0.0.1:3000)
-    options: -p <profile>
   activate <profile>             Activate a profile
   new [options] <profile>        Create a new profile
-    options: -a, --activate
   list                           List all created profiles
   delete <profile>               Delete a profile
   clear                          Clear current profile & disactivate all OS mappings
