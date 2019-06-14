@@ -19,7 +19,7 @@ Commands:
     options: -a, --activate
   list                           List all created profiles
   delete <profile>               Delete a profile
-  clear                          Clear current profile && disactivate all OS mappings
+  clear                          Clear current profile & disactivate all OS mappings
   edit <profile>                 Open a profile in $EDITOR
   update                         Updates OS hosts and port settings to your current configured settings.
   edit-default                   Edit default hosts. Default hosts are always loaded, for mappings like: `localhost 127.0.0.1`

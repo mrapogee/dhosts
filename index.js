@@ -419,7 +419,7 @@ program
 
 program
   .command("clear")
-  .description("Clear current profile && disactivate all OS mappings")
+  .description("Clear current profile & disactivate all OS mappings")
   .action(
     cleanExit(async profileName => {
       await fs.writeFile(path.join(configDirectory, "current-profile"), "");
